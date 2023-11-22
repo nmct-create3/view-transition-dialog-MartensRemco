@@ -12,7 +12,9 @@
 * {
     box-sizing: border-box;
 }
-
+html{
+    font-family: 'Inter', sans-serif;
+}
 body,
 h1,
 h2,
@@ -33,4 +35,58 @@ svg {
     max-width: 100%;
     height: auto;
     display: block;
+}
+#modalDialog{
+    max-width: 30vw;
+    padding: 0;
+    border: none;
+}
+.dialog__header{
+    background-color: lightgray;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+    margin: 0;
+}
+.dialog__body{
+    padding: 1rem;
+}
+.dialog__button{
+    border: none;
+    background-color: transparent;
+    padding: .5rem;
+    cursor:pointer;
+}
+::backdrop{
+    background-color: rgba(0,0,0,.5);
+}
+@keyframes fade-in{
+    from{
+        opacity: 0;
+    }
+}
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+@keyframes slide-from-bottom {
+    from {
+        transform: translateY(30px);
+    }
+}
+@keyframes slide-to-bottom {
+    to {
+        transform: translateY(30px);
+    }
+}
+
+::view-transition-old(modelDialog){
+    animation: 90ms ease-in both fade-out,
+    300ms ease both slide-to-bottom;
+}
+::view-transition-new(modelDialog) {
+    animation: 200ms ease-out 90ms both fade-in,
+    300ms ease both slide-from-bottom;
 }
